@@ -1,0 +1,24 @@
+{% extends '@AdminLTE/layout/form-theme-base.html.twig' %}
+
+{#
+    ATTENTION:
+    when changing anything in this file, check if the changes need to be applied to form-theme-horizontal.html.twig as well
+#}
+
+{% block email_widget -%}
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-at"></i>
+        </div>
+        {{- parent() -}}
+    </div>
+{%- endblock email_widget %}
+
+{% block password_widget -%}
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fas fa-key"></i>
+        </div>
+        {{- parent() -}}
+    </div>
+{%- endblock password_widget %}
