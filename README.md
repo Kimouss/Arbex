@@ -1,4 +1,4 @@
-# Arbex
+# ArBex
 
 ### Minimum requirements
 

@@ -1,0 +1,14 @@
+App\Entity\Menu:
+
+### USER ###
+    menu_user_parent:
+        label: 'Utilisateur'
+        icon: 'fas fa-user'
+        is_active: true
+
+    menu_user_child:
+        label: 'Liste des utilisateurs'
+        menu: '@menu_user_parent'
+        route: 'admin_user_user_index'
+        is_active: true
+

@@ -1,37 +1,38 @@
 {% extends 'admin/base.html.twig' %}
 
 {% block title %}User index{% endblock %}
+{% block page_title %}User{% endblock %}
+{% block page_subtitle %}index{% endblock %}
 
-{% block body %}
-    <h1>User index</h1>
+{% block page_content %}
+    <div class="box box-primary">
+        <div class="box-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            {{ knp_pagination_sortable(pagination, 'Email', 'user.email') }}
+                            <i class="fas fa-{{ sortDirectionIcon('user.email', pagination.params) }}"></i>
+                        </th>
+                        <th scope="col" class="text-center">
+                            {{ knp_pagination_sortable(pagination, 'Date d\'inscription', 'user.createdAt') }}
+                            <i class="fas fa-{{ sortDirectionIcon('user.createdAt', pagination.params) }}"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in pagination %}
+                        <tr>
+                            <th scope="row">{{ user.email }}</th>
+                            <td class="text-center">{{ user.createdAt | date('d-m-Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
-                <td>
-                    <a href="{{ path('user_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('user_user_new') }}">Create new</a>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

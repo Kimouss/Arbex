@@ -1,0 +1,29 @@
+App\Entity\User\User:
+  user_random (template):
+    email: <email()>
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'
+    roles: ['ROLE_USER']
+    # password = 'Password1'
+    password: '\$2y\$13\$5fR66MJOsHZKT0YomXG28.d5Sru3JACSG7z4PxODGAA9qw1ilnbiy'
+
+  user (template, extends user_random):
+    roles: [ 'ROLE_USER' ]
+
+  admin_arbex (template, extends user):
+    roles: [ 'ROLE_ADMIN' ]
+    email: '<arbexEmail(<current()>)>'
+
+  user_admin_arbex:
+    email: 'adminarbex@arbex.com'
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'
+    roles: ['ROLE_ADMIN', 'ROLE_ADMIN_ARBEX']
+    # password = 'Password1'
+    password: '\$2y\$13\$5fR66MJOsHZKT0YomXG28.d5Sru3JACSG7z4PxODGAA9qw1ilnbiy'
+
+  user_{1..15} (extends user_random):
+  user_{judas_bricot, sacha_touille} (extends user):
+
+  user_{kim_quang_pham, claire_boine} (extends admin_arbex):
+

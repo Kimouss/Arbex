@@ -1,11 +1,3 @@
-{#
-    Use this as your new starter template page, use it to start your new project,
-    by adding this code to your own base template:
-
-    {% extends '@AdminLTE/layout/default-layout.html.twig' %}
-
-    Enjoy your AdminLTE theme!
-#}
 <!DOCTYPE html{% block html_start %}{% endblock %}>
 <html lang="{{ app.request.locale }}">
 <head>
@@ -34,10 +26,10 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
     <header class="main-header">
         <a href="{% block logo_path %}{{ path('adminlte_welcome'|route_alias) }}{% endblock %}" class="logo">
             <span class="logo-mini">
-                {% block logo_mini %}<b>Arbex</b>{% endblock %}
+                {% block logo_mini %}<b>ArBex</b>{% endblock %}
             </span>
             <span class="logo-lg">
-               {% block logo_large %} <b>Arbex</b> {% endblock %}
+               {% block logo_large %} <b>ArBex</b> {% endblock %}
             </span>
         </a>
 

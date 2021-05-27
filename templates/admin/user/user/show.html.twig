@@ -2,29 +2,36 @@
 
 {% block title %}User{% endblock %}
 
-{% block body %}
+{% block page_content %}
     <h1>User</h1>
+    <div class="box box-default">
+        <div class="box-body">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Lastname</th>
+                    <td>{{ user.identity.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Firstname</th>
+                    <td>{{ user.identity.firstName }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="box-footer">
+            <a href="{{ path('user_user_index') }}">back to list</a>
 
-    <a href="{{ path('user_user_index') }}">back to list</a>
+{#            <a href="{{ path('user_user_edit', {'id': user.id}) }}">edit</a>#}
 
-    <a href="{{ path('user_user_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('admin/user/user/_delete_form.html.twig') }}
+            {% if app.user.id != user.id %}
+                {{ include('user/user/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

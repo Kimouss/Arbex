@@ -2,10 +2,9 @@
 
 namespace App\Controller\Admin\User;
 
+use App\Controller\ArbexAbstractController;
 use App\Entity\User\User;
 use App\Form\User\UserType;
-use App\Repository\User\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,15 +12,21 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/user")
  */
-class UserController extends AbstractController
+class UserController extends ArbexAbstractController
 {
     /**
      * @Route("/", name="admin_user_user_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(Request $request): Response
     {
+        $pagination = $this->paginator->paginate(
+            $this->entityManager->getRepository(User::class)->getAllQuery(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/user/user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 
