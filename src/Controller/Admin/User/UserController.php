@@ -44,7 +44,7 @@ class UserController extends ArbexAbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_user_index');
+            return $this->redirectToRoute('admin_user_user_index');
         }
 
         return $this->render('admin/user/user/new.html.twig', [
@@ -74,7 +74,7 @@ class UserController extends ArbexAbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_user_index');
+            return $this->redirectToRoute('admin_user_user_index');
         }
 
         return $this->render('admin/user/user/edit.html.twig', [
@@ -84,7 +84,7 @@ class UserController extends ArbexAbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_user_user_delete", methods={"POST"})
+     * @Route("/{id}", name="admin_user_user_delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
@@ -94,6 +94,6 @@ class UserController extends ArbexAbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_user_index');
+        return $this->redirectToRoute('admin_user_user_index');
     }
 }

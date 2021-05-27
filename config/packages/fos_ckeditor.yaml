@@ -1,0 +1,22 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+fos_ck_editor:
+    configs:
+        main_config:
+            toolbar:
+                - [ 'Source', '-', 'NewPage', 'Preview', 'Print', '-', 'Templates' ]
+                - [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ]
+                - [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ]
+                - [ 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ]
+                - '/'
+                - [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat' ]
+                - [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ]
+                - [ 'Link', 'Unlink', 'Anchor' ]
+                - '/'
+                - [ 'Styles', 'Format', 'Font', 'FontSize' ]
+                - [ 'TextColor', 'BGColor' ]
+                - [ 'Maximize', 'ShowBlocks' ]

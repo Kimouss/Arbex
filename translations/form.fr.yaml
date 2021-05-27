@@ -1,0 +1,13 @@
+form:
+  civility: "Civilité"
+  roles: "Rôles"
+  lastname: "Nom"
+  firstname: "Prénom"
+  birthdate: "Date de naissance"
+  profile: "Profile"
+  email:
+    first: "Adresse email"
+    second: "Confirmez adresse email"
+  password:
+    first: "Mot de passe"
+    second: "Confirmer mot de passe"

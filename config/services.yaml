@@ -34,3 +34,8 @@ services:
         autowire: true
         tags:
             - { name: nelmio_alice.faker.provider }
+
+    App\DataFixtures\Provider\GenericProvider:
+        autowire: true
+        tags:
+            - { name: nelmio_alice.faker.provider }

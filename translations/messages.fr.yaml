@@ -1,0 +1,12 @@
+arbex:
+  civility: "Civilité"
+  lastname: "Nom"
+  firstname: "Prénom"
+  register_date: "Date d'inscription"
+  email:
+    first: "Adresse email"
+    second: "Confirmez adresse email"
+  password:
+    first: "Mot de passe"
+    second: "Confirmer mot de passe"
+  profile: 'Profile'

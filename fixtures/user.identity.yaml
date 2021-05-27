@@ -1,0 +1,27 @@
+App\Entity\User\Identity:
+  identity_random (template):
+    firstName: <firstName()>
+    lastName: <lastName()>
+    gender: <gender()>
+
+  identity_admin_arbex:
+    firstName: 'Admin'
+    lastName: 'ARBEX'
+    gender: <gender()>
+    birthdate: <datetime()>
+
+  identity_kim_quang_pham:
+    firstName: 'Kim Quang'
+    lastName: 'PHAM'
+    gender: 'M'
+    birthdate: <datetime()>
+
+  identity_claire_boine:
+    firstName: 'Claire'
+    lastName: 'BOINE'
+    gender: 'MME'
+    birthdate: <datetime()>
+
+  identity_{1..15} (extends identity_random):
+
+  identity_{judas_bricot, sacha_touille} (extends identity_random):

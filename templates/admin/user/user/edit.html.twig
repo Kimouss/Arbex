@@ -2,17 +2,28 @@
 
 {% block title %}Edit User{% endblock %}
 
-{% block page_content %}
-    <h1>Edit User</h1>
+{% block page_title %}User{% endblock %}
+{% block page_subtitle %}Edit{% endblock %}
 
+{% block page_content %}
     <div class="box box-default">
         <div class="box-body">
             {{ include('user/user/_form.html.twig', {'button_label': 'Update'}) }}
         </div>
 
         <div class="box-footer">
-            <a href="{{ path('user_user_index') }}">back to list</a>
-            {{ include('user/user/_delete_form.html.twig') }}
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_user_user_index') }}" class="btn btn-default">back to list</a>
+                </div>
+
+                {% if is_granted('ROLE_ADMIN_ARBEX') or app.user.id != user.id %}
+                    <div class="col-md-2 pull-right">
+                        {{ include('admin/user/user/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

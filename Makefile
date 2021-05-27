@@ -79,10 +79,10 @@ migration: vendor
 assets: ## Run Webpack Encore to compile assets
 #assets: node_modules
 assets: vendor
-	$(SYMFONY) assets:install
+	$(SYMFONY) assets:install public
 
 ckeditor: vendor
-	$(SYMFONY) ckeditor:install
+	$(SYMFONY) ckeditor:install --clear=drop
 
 jwt: ## Install JWT Token public key ( no token generation, access token only )
 jwt:
