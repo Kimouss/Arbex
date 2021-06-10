@@ -19,15 +19,11 @@ class UserType extends AbstractType
             ->add('identity', IdentityType::class)
             ->add('roles', ChoiceType::class, [
                 'choices' => User::ARRAY_ROLES,
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => true,
                 'label' => 'form.roles',
                 'translation_domain' => 'form',
-                'constraints' => [
-                    new Assert\NotBlank(),
-                ]
             ])
-            ->add('roles')
             ->add('profile', CKEditorType::class, [
                 'required' => false,
                 'config_name' => 'main_config',
