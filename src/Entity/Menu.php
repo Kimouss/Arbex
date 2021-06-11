@@ -17,42 +17,44 @@ class Menu
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?string $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $route;
+    private ?string $route;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $label;
+    private string $label;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $icon;
+    private ?string $icon;
 
     /**
      * @ORM\ManyToOne(targetEntity=Menu::class, inversedBy="parent")
      */
-    private $menu;
+    private ?Menu $menu;
 
     /**
      * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="menu")
      */
-    private $parent;
+    private Collection $parent;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive = false;
+    private bool $isActive = false;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isUri = false;
+    private bool $isUri = false;
+
+    private ?int $position;
 
     public function __construct()
     {
@@ -162,6 +164,18 @@ class Menu
     public function setIsUri(bool $isUri): self
     {
         $this->isUri = $isUri;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }

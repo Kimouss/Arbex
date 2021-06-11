@@ -1,5 +1,18 @@
 App\Entity\Menu:
 
+### DASHBOARD ###
+    menu_dashboard_parent:
+        label: 'Dashboard'
+        is_active: true
+        icon: 'fas fa-chart-line'
+        position: 1
+
+    menu_dashboard_child:
+        label: 'Something'
+        route: 'admin_dashboard'
+        menu: '@menu_dashboard_parent'
+        is_active: true
+
 ### USER ###
     menu_user_parent:
         label: 'Utilisateur'

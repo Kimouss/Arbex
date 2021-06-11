@@ -27,5 +27,5 @@ App\Entity\User\User:
   user_{1..15} (extends user_random):
   user_{judas_bricot, sacha_touille} (extends user):
 
-  user_{kim_quang_pham, claire_boine} (extends admin_arbex):
+  user_{kim_quang_pham, claire_boine, zoe_yan} (extends admin_arbex):
 

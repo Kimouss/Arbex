@@ -1,0 +1,16 @@
+App\Entity\Publication:
+  publication_random (template):
+    title: <paragraph(1)>
+    description: <paragraph(1)>
+    url: <url()>
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'
+    user: '@user_<current()>'
+
+  publication_admin_arbex (extends publication_random):
+    user: '@user_admin_arbex'
+
+  publication_{1..15} (extends publication_random):
+  publication_{judas_bricot, sacha_touille} (extends publication_random):
+  publication_{kim_quang_pham, claire_boine, zoe_yan} (extends publication_random):
+

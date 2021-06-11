@@ -27,6 +27,10 @@
                             <i class="fas fa-{{ sortDirectionIcon('user.createdAt', pagination.params) }}"></i>
                         </th>
                         <th scope="col" class="text-center">
+                            {{ knp_pagination_sortable(pagination, 'arbex.is_active' | trans, 'user.isActive') }}
+                            <i class="fas fa-{{ sortDirectionIcon('user.isActive', pagination.params) }}"></i>
+                        </th>
+                        <th scope="col" class="text-center">
                             Action
                         </th>
                     </tr>
@@ -38,6 +42,17 @@
                             <td class="text-center">{{ user.identity.firstName }}</td>
                             <td class="text-center">{{ user.identity.lastName }}</td>
                             <td class="text-center">{{ user.createdAt | date('d-m-Y') }}</td>
+                            <td class="text-center">
+                                {% if user.active %}
+                                    <span class="label label-success">
+                                        {{ 'arbex.generic.yes' | trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="label label-danger">
+                                        {{ 'arbex.generic.no' | trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a href="{{ path('admin_user_user_show', {id: user.id}) }}" class="btn-sm btn-success">

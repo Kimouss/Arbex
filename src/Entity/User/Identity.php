@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\User\IdentityRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

@@ -41,6 +41,16 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
             {% endblock %}
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+                    <li>
+                        {% for locale in locales %}
+                            {% if locale != app.request.locale %}
+                                <a href="{{ path('change_locale', {'locale': locale}) }}">
+                                    {% set icon = locale~'.svg' %}
+                                    <img class="flag-icon" src="{{ asset('build/images/icons/'~icon) }}" alt="locale">
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </li>
                     {% block navbar_start %}{% endblock %}
                     {% block navbar_messages %}
                         {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\NavbarController::messagesAction')) }}

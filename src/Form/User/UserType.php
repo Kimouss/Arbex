@@ -5,11 +5,9 @@ namespace App\Form\User;
 use App\Entity\User\User;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints as Assert;
 
 class UserType extends AbstractType
 {
@@ -17,6 +15,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('identity', IdentityType::class)
+            ->add('isActive')
             ->add('roles', ChoiceType::class, [
                 'choices' => User::ARRAY_ROLES,
                 'multiple' => true,

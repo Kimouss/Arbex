@@ -22,6 +22,12 @@ App\Entity\User\Identity:
     gender: 'MME'
     birthdate: <datetime()>
 
+  identity_zoe_yan:
+    firstName: 'Zoe'
+    lastName: 'YAN'
+    gender: 'MME'
+    birthdate: <datetime()>
+
   identity_{1..15} (extends identity_random):
 
   identity_{judas_bricot, sacha_touille} (extends identity_random):

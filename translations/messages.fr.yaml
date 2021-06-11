@@ -1,12 +1,22 @@
-arbex:
-  civility: "Civilité"
-  lastname: "Nom"
-  firstname: "Prénom"
-  register_date: "Date d'inscription"
-  email:
-    first: "Adresse email"
-    second: "Confirmez adresse email"
-  password:
-    first: "Mot de passe"
-    second: "Confirmer mot de passe"
-  profile: 'Profile'
+arbex.birthdate: 'Année de naissance'
+arbex.civility: 'Civilité'
+arbex.firstname: 'Prénom'
+arbex.lastname: 'Nom'
+arbex.profile: 'Profile'
+arbex.register_date: "Date d'inscription"
+arbex.is_active: 'Activé'
+
+arbex.generic.yes: 'Oui'
+arbex.generic.no: 'Non'
+
+arbex.password.first: 'Mot de passe'
+arbex.password.second: 'Confirmer mot de passe'
+
+arbex.email.first: 'Adresse email'
+arbex.email.second: 'Confirmez adresse email'
+
+arbex.publication.title: 'Titre'
+arbex.publication.url: 'Lien'
+arbex.publication.description: 'Description'
+arbex.publication.user: 'Utilisateur'
+arbex.publication.visit_website: 'Visiter le site'

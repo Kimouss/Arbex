@@ -2,15 +2,36 @@
 
 namespace App\Entity\User;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Entity\Publication;
 use App\Repository\User\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\Lazy\LazyUuidFromString;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource(
+ *     attributes={
+ *          "normalization_context"={"groups"={
+ *              "User:output",
+ *              "User:io",
+ *          }},
+ *          "denormalization_context"={"groups"={
+ *              "User:input",
+ *              "User:io",
+ *          }}
+ *      },
+ *     collectionOperations={
+ *          "get",
+ *     }
+ * )
+ * @UniqueEntity("email")
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface
@@ -48,7 +69,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = ['ROLE_USER'];
 
     /**
      * @var string The hashed password
@@ -62,12 +83,27 @@ class User implements UserInterface
     private ?string $profile;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isActive = false;
+
+    /**
      * @ORM\OneToOne(targetEntity=Identity::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank()
      * @Assert\Valid()
      */
     private Identity $identity;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="user")
+     */
+    private Collection $publications;
+
+    public function __construct()
+    {
+        $this->publications = new ArrayCollection();
+    }
 
     public function getId(): ?string
     {
@@ -184,5 +220,47 @@ class User implements UserInterface
     public function __toString(): string
     {
         return $this->email;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Publication[]
+     */
+    public function getPublications(): Collection
+    {
+        return $this->publications;
+    }
+
+    public function addPublication(Publication $publication): self
+    {
+        if (!$this->publications->contains($publication)) {
+            $this->publications[] = $publication;
+            $publication->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePublication(Publication $publication): self
+    {
+        if ($this->publications->removeElement($publication)) {
+            // set the owning side to null (unless already changed)
+            if ($publication->getUser() === $this) {
+                $publication->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

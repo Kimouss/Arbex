@@ -5,3 +5,5 @@ twig:
     exception_controller: null
     form_themes:
         - '@AdminLTE/layout/form-theme-horizontal.html.twig'
+    globals:
+        locales: '%app.locales%'
