@@ -6,51 +6,67 @@
 {% block page_subtitle %}Show{% endblock %}
 
 {% block page_content %}
-    <div class="box box-default">
-        <div class="box-body">
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>{{ 'arbex.email.first' | trans }}</th>
-                    <td>{{ user.email }}</td>
-                </tr>
-                <tr>
-                    <th>{{ 'arbex.firstname' | trans }}</th>
-                    <td>{{ user.identity.lastName }}</td>
-                </tr>
-                <tr>
-                    <th>{{ 'arbex.lastname' | trans }}</th>
-                    <td>{{ user.identity.firstName }}</td>
-                </tr>
-                {% if user.identity.birthdate %}
-                    <tr>
-                        <th>{{ 'arbex.birthdate' | trans }}</th>
-                        <td>{{ user.identity.birthdate | date('d-m-Y') }}</td>
-                    </tr>
-                {% endif %}
-                {% if user.profile %}
-                    <tr>
-                        <th>{{ 'arbex.profile' | trans }}</th>
-                        <td>{{ user.profile | raw }}</td>
-                    </tr>
-                {% endif %}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="box-footer">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="{{ path('admin_user_user_index') }}" class="btn btn-default">back to list</a>
-                    <a href="{{ path('admin_user_user_edit', {'id': user.id}) }}" class="btn btn-warning">edit</a>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="{% if app.request.get('_route') == 'admin_user_user_show' %}active{% endif %}">
+                <a href="{{ path('admin_user_user_show', { id: user.id }) }}">
+                    {{ 'arbex.user.user' | trans }}
+                </a>
+            </li>
+            <li class="{% if app.request.get('_route') == 'admin_publication_list' %}active{% endif %}">
+                <a href="{{ path('admin_publication_list', { user_id: user.id }) }}">
+                    {{ 'arbex.publication.publication' | trans }}
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            {% block content_body %}
+                <div class="box-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>{{ 'arbex.email.first' | trans }}</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'arbex.firstname' | trans }}</th>
+                            <td>{{ user.identity.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'arbex.lastname' | trans }}</th>
+                            <td>{{ user.identity.firstName }}</td>
+                        </tr>
+                        {% if user.identity.birthdate %}
+                            <tr>
+                                <th>{{ 'arbex.birthdate' | trans }}</th>
+                                <td>{{ user.identity.birthdate | date('d-m-Y') }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if user.profile %}
+                            <tr>
+                                <th>{{ 'arbex.profile' | trans }}</th>
+                                <td>{{ user.profile | raw }}</td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
                 </div>
 
-                {% if is_granted('ROLE_ADMIN_ARBEX') or app.user.id != user.id %}
-                    <div class="col-md-2 pull-right">
-                        {{ include('admin/user/user/_delete_form.html.twig') }}
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="{{ path('admin_user_user_index') }}" class="btn btn-default">back to list</a>
+                            <a href="{{ path('admin_user_user_edit', {'id': user.id}) }}" class="btn btn-warning">edit</a>
+                        </div>
+
+                        {% if is_granted('ROLE_ADMIN_ARBEX') or app.user.id != user.id %}
+                            <div class="col-md-2 pull-right">
+                                {{ include('admin/user/user/_delete_form.html.twig') }}
+                            </div>
+                        {% endif %}
                     </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endblock %}
         </div>
     </div>
 {% endblock %}

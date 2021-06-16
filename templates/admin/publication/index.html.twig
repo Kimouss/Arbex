@@ -6,62 +6,6 @@
 
 {% block page_content %}
     <div class="box box-primary">
-        <div class="box-body">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">
-                        {{ knp_pagination_sortable(pagination, 'arbex.publication.title' | trans, 'publication.title') }}
-                        <i class="fas fa-{{ sortDirectionIcon('publication.title', pagination.params) }}"></i>
-                    </th>
-                    <th scope="col" class="text-center">
-                        {{ knp_pagination_sortable(pagination, 'arbex.publication.user' | trans, 'user.email') }}
-                        <i class="fas fa-{{ sortDirectionIcon('user.email', pagination.params) }}"></i>
-                    </th>
-                    <th scope="col" class="text-center">
-                        {{ knp_pagination_sortable(pagination, 'arbex.publication.url' | trans, 'publication.url') }}
-                        <i class="fas fa-{{ sortDirectionIcon('publication.url', pagination.params) }}"></i>
-                    </th>
-                    <th scope="col" class="text-center">
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for publication in pagination %}
-                    <tr>
-                        <th scope="row">{{ publication.title }}</th>
-                        <td class="text-center">
-                            <a href="{{ path('admin_user_user_show', {'id': publication.user.id}) }}" target="_blank">{{ publication.user.email }}</a>
-                        </td>
-                        <td class="text-center">
-                            <a href="{{ publication.url }}" target="_blank" class="btn-sm btn-primary">
-                                {{ 'arbex.publication.visit_website'| trans }}
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <a href="{{ path('admin_publication_show', {id: publication.id}) }}" class="btn-sm btn-success">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </div>
-                            <div class="btn-group">
-                                <a href="{{ path('admin_publication_edit', {id: publication.id}) }}" class="btn-sm btn-primary">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <div class="navigation">
-                <div class="pull-right">
-                    {{ knp_pagination_render(pagination) }}
-                </div>
-            </div>
-        </div>
+        {{ include('admin/publication/partials/_table_list.html.twig') }}
     </div>
 {% endblock %}

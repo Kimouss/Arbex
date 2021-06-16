@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Publication;
 
 use App\Entity\Publication;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,9 +16,12 @@ class PublicationType extends AbstractType
             ->add('title')
             ->add('url')
             ->add('description')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('user')
+            ->add('createdAt', DateTimeType::class, [
+                'widget' => 'single_text',
+            ])
+            ->add('updatedAt', DateTimeType::class, [
+                'widget' => 'single_text',
+            ])
         ;
     }
 

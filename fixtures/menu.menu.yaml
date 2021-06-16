@@ -25,3 +25,15 @@ App\Entity\Menu:
         route: 'admin_user_user_index'
         is_active: true
 
+### PUBLICATION ###
+    menu_publication_parent:
+        label: 'Publications'
+        icon: 'fas fa-newspaper'
+        is_active: true
+
+    menu_publication_child:
+        label: 'Liste des publications'
+        menu: '@menu_publication_parent'
+        route: 'admin_publication_index'
+        is_active: true
+

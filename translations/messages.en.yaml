@@ -1,3 +1,6 @@
+arbex.generic.filter: 'Filtre'
+arbex.generic.cta.filter: 'Filtrer'
+
 arbex.birthdate: 'Birthdate'
 arbex.civility: 'Civility'
 arbex.firstname: 'Firstname'
@@ -20,3 +23,8 @@ arbex.publication.url: 'Link'
 arbex.publication.description: 'Description'
 arbex.publication.user: 'User'
 arbex.publication.visit_website: 'Visit website'
+arbex.publication.created_at: 'Created at'
+arbex.publication.updated_at: 'Updated at'
+arbex.publication.publication: 'Publications'
+
+arbex.user.user: 'User'

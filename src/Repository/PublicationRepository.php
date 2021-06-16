@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Publication;
+use App\Entity\User\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -25,6 +26,29 @@ class PublicationRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('publication')
             ->join('publication.user', 'user')
             ->getQuery();
+    }
+
+    public function getAllByUser($userId): Query
+    {
+        return $this->createQueryBuilder('publication')
+            ->join('publication.user', 'user')
+            ->where('user.id = :user_id')
+            ->setParameter('user_id', $userId)
+            ->getQuery();
+    }
+
+    public function getSearchQuery($userId, $params): Query
+    {
+        $qb = $this->createQueryBuilder('publication')
+            ->join('publication.user', 'user')
+            ->where('user.id = :user_id')
+            ->setParameter('user_id', $userId);
+
+        if (array_key_exists('title', $params) && !empty($params['title'])) {
+            $qb->andWhere('publication.title LIKE :title')->setParameter('title', '%'.$params['title'].'%');
+        }
+
+        return $qb->getQuery();
     }
 
     // /**

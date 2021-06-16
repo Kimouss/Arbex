@@ -4,9 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Controller\ArbexAbstractController;
 use App\Entity\Publication;
-use App\Form\PublicationType;
+use App\Entity\User\User;
+use App\Form\Publication\PublicationSearchType;
+use App\Form\Publication\PublicationType;
 use App\Repository\PublicationRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -97,5 +99,32 @@ class PublicationController extends ArbexAbstractController
         }
 
         return $this->redirectToRoute('admin_publication_index');
+    }
+
+    /**
+     * @Route("/{user_id}/publications", name="admin_publication_list", methods={"GET"})
+     * @ParamConverter("user", options={"mapping": {"user_id": "id"}})
+     */
+    public function list(PublicationRepository $publicationRepository, User $user, Request  $request): Response
+    {
+        $searchForm = $this->createForm(PublicationSearchType::class);
+        $query = $publicationRepository->getAllByUser($user->getId());
+        $searchForm->handleRequest($request);
+
+        if ($searchForm->isSubmitted()) {
+            $query = $publicationRepository->getSearchQuery($user->getId(), $request->get('publication_search'));
+        }
+
+        $pagination = $this->paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
+
+        return $this->render('admin/publication/partials/_list.html.twig', [
+            'user' => $user,
+            'pagination' => $pagination,
+            'search_form' => $searchForm->createView(),
+        ]);
     }
 }
