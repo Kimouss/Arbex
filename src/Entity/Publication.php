@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Tag\PublicationTag;
 use App\Entity\User\User;
 use App\Repository\PublicationRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
@@ -51,6 +53,11 @@ class Publication
      * @ORM\JoinColumn(nullable=false)
      */
     private User $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=PublicationTag::class, inversedBy="publications")
+     */
+    public Collection $tags;
 
     public function getId(): ?string
     {
@@ -113,6 +120,34 @@ class Publication
     public function setPosition(?int $position): self
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PublicationTag[]
+     */
+    public function getTags(): ?Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(PublicationTag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addPublication($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(PublicationTag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+            $tag->removePublication($this);
+        }
 
         return $this;
     }

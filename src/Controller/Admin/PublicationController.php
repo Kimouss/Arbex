@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Controller\ArbexAbstractController;
 use App\Entity\Publication;
 use App\Entity\User\User;
-use App\Form\Publication\PublicationSearchType;
+use App\Form\Publication\TagSearchType;
 use App\Form\Publication\PublicationType;
 use App\Repository\PublicationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -107,7 +107,7 @@ class PublicationController extends ArbexAbstractController
      */
     public function list(PublicationRepository $publicationRepository, User $user, Request  $request): Response
     {
-        $searchForm = $this->createForm(PublicationSearchType::class);
+        $searchForm = $this->createForm(TagSearchType::class);
         $query = $publicationRepository->getAllByUser($user->getId());
         $searchForm->handleRequest($request);
 

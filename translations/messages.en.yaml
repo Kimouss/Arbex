@@ -28,3 +28,5 @@ arbex.publication.updated_at: 'Updated at'
 arbex.publication.publication: 'Publications'
 
 arbex.user.user: 'User'
+
+arbex.tag.title: 'Title'

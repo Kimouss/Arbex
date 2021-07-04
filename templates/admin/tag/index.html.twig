@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Tag index{% endblock %}
+{% block page_title %}Tag{% endblock %}
+{% block page_subtitle %}index{% endblock %}
+
+{% block page_content %}
+    <div class="box box-primary">
+        {{ include('admin/tag/partials/_table_list.html.twig') }}
+    </div>
+{% endblock %}
