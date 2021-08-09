@@ -4,6 +4,7 @@ namespace App\Repository\Tag;
 
 use App\Entity\Tag\PublicationTag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,5 +18,12 @@ class PublicationTagRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, PublicationTag::class);
+    }
+
+    public function getAllQuery(): Query
+    {
+        return $this->createQueryBuilder('publication_tag')
+            ->join('publication_tag.parent', 'parent')
+            ->getQuery();
     }
 }

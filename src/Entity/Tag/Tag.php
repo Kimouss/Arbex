@@ -16,8 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({
- *     "user" = "UserTag",
+ *     "parent_publication" = "ParentPublicationTag",
  *     "publication" = "PublicationTag",
+ *     "affiliation_group" = "AffiliationGroupTag",
+ *     "availability" = "AvailabilityTag",
+ *     "training_stage" = "TrainingStageTag",
  * })
  */
 abstract class Tag

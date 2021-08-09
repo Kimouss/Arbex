@@ -2,12 +2,12 @@
 
 namespace App\Form\Tag;
 
-use App\Entity\Tag\UserTag;
+use App\Entity\Tag\AffiliationGroupTag;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserTagType extends AbstractType
+class AffiliationGroupTagType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -19,7 +19,7 @@ class UserTagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UserTag::class,
+            'data_class' => AffiliationGroupTag::class,
         ]);
     }
 }

@@ -4,7 +4,6 @@ namespace App\Entity\User;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Publication;
-use App\Entity\Tag\UserTag;
 use App\Repository\User\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -100,11 +99,6 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="user")
      */
     private Collection $publications;
-
-    /**
-    * @ORM\ManyToMany(targetEntity=UserTag::class, inversedBy="users")
-    */
-    public Collection $tags;
 
     public function __construct()
     {
@@ -265,34 +259,6 @@ class User implements UserInterface
             if ($publication->getUser() === $this) {
                 $publication->setUser(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|UserTag[]
-     */
-    public function getTags(): ?Collection
-    {
-        return $this->tags;
-    }
-
-    public function addTag(UserTag $tag): self
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTag(UserTag $tag): self
-    {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-            $tag->removeUser($this);
         }
 
         return $this;

@@ -1,0 +1,22 @@
+{% extends 'admin/tag/parent_publication_tag/show.html.twig' %}
+
+{% block content_body %}
+    <div class="box box-warning box-solid collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ 'arbex.generic.filter' | trans }}</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body" style="display: none;">
+            {{ form_start(search_form) }}
+            {{ form_row(search_form.title) }}
+
+            <button type="submit" class="pull-right btn btn-warning">{{ 'arbex.generic.cta.filter' | trans }}</button>
+            {{ form_end(search_form) }}
+        </div>
+    </div>
+
+    {{ include('admin/tag/parent_publication_tag/partials/_table_list.html.twig') }}
+{% endblock %}

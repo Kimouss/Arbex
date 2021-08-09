@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edit Publication Tag{% endblock %}
+
+{% block page_content %}
+    <div class="box box-default">
+        <div class="box-body">
+            {{ include('admin/tag/publication_tag/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+
+        <div class="box-footer">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_publication_tag_index') }}" class="btn btn-default">back to list</a>
+                </div>
+
+                {% if is_granted('ROLE_ADMIN_ARBEX') %}
+                    <div class="col-md-2 pull-right">
+                        {{ include('admin/tag/publication_tag/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

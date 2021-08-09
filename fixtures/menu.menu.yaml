@@ -37,3 +37,20 @@ App\Entity\Menu:
         route: 'admin_publication_index'
         is_active: true
 
+### TAG ###
+    menu_tag_parent:
+        label: 'Tags'
+        icon: 'fas fa-tags'
+        is_active: true
+
+    menu_tag_child:
+        label: 'Liste des tags'
+        menu: '@menu_tag_parent'
+        route: 'admin_tag_index'
+        is_active: true
+
+    menu_parent_publication_tag_child:
+        label: 'Liste des tags'
+        menu: '@menu_tag_parent'
+        route: 'admin_parent_publication_tag_index'
+        is_active: true

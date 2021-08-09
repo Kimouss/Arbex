@@ -7,6 +7,14 @@
                 <i class="fas fa-{{ sortDirectionIcon('tag.title', pagination.params) }}"></i>
             </th>
             <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.tag.created_at' | trans, 'user.created_at') }}
+                <i class="fas fa-{{ sortDirectionIcon('user.created_at', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.tag.updated_at' | trans, 'tag.updated_at') }}
+                <i class="fas fa-{{ sortDirectionIcon('tag.updated_at', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
                 Action
             </th>
         </tr>
@@ -15,6 +23,8 @@
         {% for tag in pagination %}
             <tr>
                 <th scope="row">{{ tag.title }}</th>
+                <td class="text-center">{{ tag.createdAt | date('d-m-Y') }}</td>
+                <td class="text-center">{{ tag.updatedAt | date('d-m-Y') }}</td>
                 <td class="text-center">
                     <div class="btn-group">
                         <a href="{{ path('admin_tag_show', {id: tag.id}) }}" class="btn-sm btn-success">

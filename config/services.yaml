@@ -28,6 +28,11 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+    KevinPapst\AdminLTEBundle\Controller\BreadcrumbController: ~
+    KevinPapst\AdminLTEBundle\Controller\EmitterController: ~
+    KevinPapst\AdminLTEBundle\Controller\NavbarController: ~
+    KevinPapst\AdminLTEBundle\Controller\SidebarController: ~
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
@@ -40,7 +45,3 @@ services:
         autowire: true
         tags:
             - { name: nelmio_alice.faker.provider }
-
-    App\EventListener\Tag\UserTagListener:
-        tags:
-            - { name: doctrine.event_listener, event: preUpdate, priority: 500 }

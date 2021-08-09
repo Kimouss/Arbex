@@ -30,3 +30,5 @@ arbex.publication.publication: 'Publications'
 arbex.user.user: 'Utilisateur'
 
 arbex.tag.title: 'Titre'
+arbex.tag.created_at: 'Date de création'
+arbex.tag.updated_at: 'Date de modification'

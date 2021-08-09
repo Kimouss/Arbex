@@ -1,0 +1,23 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}New Parent Publication Tag{% endblock %}
+
+{% block page_title %}Parent Publication Tag{% endblock %}
+{% block page_subtitle %}New{% endblock %}
+
+{% block page_content %}
+    <div class="box box-default">
+        <div class="box-body">
+            {{ include('admin/tag/parent_publication_tag/_form.html.twig', {'button_label': 'New'}) }}
+        </div>
+
+        <div class="box-footer">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_parent_publication_tag_index') }}" class="btn btn-default">back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
