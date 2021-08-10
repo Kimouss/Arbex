@@ -1,0 +1,23 @@
+App\Entity\Tag\AvailabilityTag:
+    random_availability_tag (template):
+        title: '<current()>'
+        createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+        updatedAt: '@self->createdAt'
+
+    availability_tag_available_mentor (extends random_availability_tag):
+        title: 'Available to Mentor Students'
+
+    availability_tag_available_job (extends random_availability_tag):
+        title: 'Available for Job Opportunities'
+
+    availability_tag_available_media (extends random_availability_tag):
+        title: 'Available for Media Inquiries'
+
+    availability_tag_available_conferences (extends random_availability_tag):
+        title: 'Available for Conferences'
+
+    availability_tag_looking_interns (extends random_availability_tag):
+        title: 'Looking for Interns'
+
+    availability_tag_looking_students (extends random_availability_tag):
+        title: 'Looking for Graduate Students'

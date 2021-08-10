@@ -7,9 +7,15 @@ App\Entity\User\User:
     # password = 'Password1'
     password: '\$2y\$13\$5fR66MJOsHZKT0YomXG28.d5Sru3JACSG7z4PxODGAA9qw1ilnbiy'
     identity: '@identity_<current()>'
+    affiliationGroupTags: ['@affiliation_group_tag_black']
+    availabilityTags: ['@availability_tag_available_mentor', '@availability_tag_available_job']
+    trainingStageTags: ['@training_stage_tag_adjunct_professor', '@training_stage_tag_assistant_professor']
 
   user (template, extends user_random):
     roles: [ 'ROLE_USER' ]
+    affiliationGroupTags: ['@affiliation_group_tag_black']
+    availabilityTags: ['@availability_tag_available_mentor', '@availability_tag_available_job']
+    trainingStageTags: ['@training_stage_tag_adjunct_professor', '@training_stage_tag_assistant_professor']
 
   admin_arbex (template, extends user):
     roles: [ 'ROLE_ADMIN' ]

@@ -3,6 +3,8 @@
 namespace App\Form\Publication;
 
 use App\Entity\Publication;
+use App\Entity\Tag\PublicationTag;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,6 +23,11 @@ class PublicationType extends AbstractType
             ])
             ->add('updatedAt', DateTimeType::class, [
                 'widget' => 'single_text',
+            ])
+            ->add('publicationTags', EntityType::class, [
+                'class' => PublicationTag::class,
+                'multiple' => true,
+                'expanded' => true,
             ])
         ;
     }

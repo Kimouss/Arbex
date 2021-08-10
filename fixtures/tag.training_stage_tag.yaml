@@ -1,0 +1,41 @@
+App\Entity\Tag\TrainingStageTag:
+    random_training_stage_tag (template):
+        title: '<current()>'
+        createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+        updatedAt: '@self->createdAt'
+
+    training_stage_tag_adjunct_professor (extends random_training_stage_tag):
+        title: 'Adjunct Professor'
+
+    training_stage_tag_assistant_professor (extends random_training_stage_tag):
+        title: 'Assistant Professor'
+
+    training_stage_tag_associate_professor (extends random_training_stage_tag):
+        title: 'Associate Professor'
+
+    training_stage_tag_professor (extends random_training_stage_tag):
+        title: 'Professor'
+
+    training_stage_tag_lecturer (extends random_training_stage_tag):
+        title: 'Lecturer'
+
+    training_stage_tag_research_scientist (extends random_training_stage_tag):
+        title: 'Research Scientist'
+
+    training_stage_tag_reseach_fellow (extends random_training_stage_tag):
+        title: 'Research Fellow'
+
+    training_stage_tag_research_scholar (extends random_training_stage_tag):
+        title: 'Research Scholar'
+
+    training_stage_tag_postdoctoral_scholar (extends random_training_stage_tag):
+        title: 'Postdoctoral Scholar'
+
+    training_stage_tag_k_educator (extends random_training_stage_tag):
+        title: 'K - 12 Educator'
+
+    training_stage_tag_graduate_student (extends random_training_stage_tag):
+        title: 'Graduate Student'
+
+    training_stage_undergraduate_student (extends random_training_stage_tag):
+        title: 'Undergraduate Student'

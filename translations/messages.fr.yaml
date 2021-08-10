@@ -8,6 +8,9 @@ arbex.lastname: 'Nom'
 arbex.profile: 'Profile'
 arbex.register_date: "Date d'inscription"
 arbex.is_active: 'Activé'
+arbex.availability: 'Availability'
+arbex.affiliation: 'Affiliation Group'
+arbex.training: 'Training Stage'
 
 arbex.generic.yes: 'Oui'
 arbex.generic.no: 'Non'

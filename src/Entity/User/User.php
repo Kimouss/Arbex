@@ -14,6 +14,9 @@ use Ramsey\Uuid\Lazy\LazyUuidFromString;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Tag\AffiliationGroupTag;
+use App\Entity\Tag\AvailabilityTag;
+use App\Entity\Tag\TrainingStageTag;
 
 /**
  * @ApiResource(
@@ -100,9 +103,27 @@ class User implements UserInterface
      */
     private Collection $publications;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=AffiliationGroupTag::class, inversedBy="users")
+     */
+    private Collection $affiliationGroupTags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=AvailabilityTag::class, inversedBy="users")
+     */
+    private Collection $availabilityTags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=TrainingStageTag::class, inversedBy="users")
+     */
+    private Collection $trainingStageTags;
+
     public function __construct()
     {
         $this->publications = new ArrayCollection();
+        $this->affiliationGroupTags = new ArrayCollection();
+        $this->availabilityTags = new ArrayCollection();
+        $this->trainingStageTags = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -260,6 +281,111 @@ class User implements UserInterface
                 $publication->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AffiliationGroupTag[]
+     */
+    public function getAffiliationGroupTags(): Collection
+    {
+        return $this->affiliationGroupTags;
+    }
+
+    public function getAffiliationGroupTagsToHtml()
+    {
+        $html = '';
+        /** @var AffiliationGroupTag $item */
+        foreach ($this->affiliationGroupTags->toArray() as $item) {
+            $html .= '<li>'.$item->getTitle().'</li>';
+        }
+
+        return '<ul>'.$html.'</ul>';
+    }
+
+    public function addAffiliationGroupTag(AffiliationGroupTag $affiliationGroupTag): self
+    {
+        if (!$this->affiliationGroupTags->contains($affiliationGroupTag)) {
+            $this->affiliationGroupTags[] = $affiliationGroupTag;
+        }
+
+        return $this;
+    }
+
+    public function removeAffiliationGroupTag(AffiliationGroupTag $affiliationGroupTag): self
+    {
+        $this->affiliationGroupTags->removeElement($affiliationGroupTag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AvailabilityTag[]
+     */
+    public function getAvailabilityTags(): Collection
+    {
+        return $this->availabilityTags;
+    }
+
+    public function getAvailabilityTagsToHtml()
+    {
+        $html = '';
+        /** @var AvailabilityTag $item */
+        foreach ($this->availabilityTags->toArray() as $item) {
+            $html .= '<li>'.$item->getTitle().'</li>';
+        }
+
+        return '<ul>'.$html.'</ul>';
+    }
+
+    public function addAvailabilityTag(AvailabilityTag $availabilityTag): self
+    {
+        if (!$this->availabilityTags->contains($availabilityTag)) {
+            $this->availabilityTags[] = $availabilityTag;
+        }
+
+        return $this;
+    }
+
+    public function removeAvailabilityTag(AvailabilityTag $availabilityTag): self
+    {
+        $this->availabilityTags->removeElement($availabilityTag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TrainingStageTag[]
+     */
+    public function getTrainingStageTags(): Collection
+    {
+        return $this->trainingStageTags;
+    }
+
+    public function getTrainingStageTagsToHtml()
+    {
+        $html = '';
+        /** @var TrainingStageTag $item */
+        foreach ($this->trainingStageTags->toArray() as $item) {
+            $html .= '<li>'.$item->getTitle().'</li>';
+        }
+
+        return '<ul>'.$html.'</ul>';
+    }
+
+    public function addTrainingStageTag(TrainingStageTag $trainingStageTag): self
+    {
+        if (!$this->trainingStageTags->contains($trainingStageTag)) {
+            $this->trainingStageTags[] = $trainingStageTag;
+        }
+
+        return $this;
+    }
+
+    public function removeTrainingStageTag(TrainingStageTag $trainingStageTag): self
+    {
+        $this->trainingStageTags->removeElement($trainingStageTag);
 
         return $this;
     }

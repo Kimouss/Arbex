@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Controller\ArbexAbstractController;
 use App\Entity\Publication;
 use App\Entity\User\User;
-use App\Form\Publication\TagSearchType;
 use App\Form\Publication\PublicationType;
 use App\Repository\PublicationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;

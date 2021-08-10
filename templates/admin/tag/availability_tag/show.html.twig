@@ -1,8 +1,8 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Tag{% endblock %}
+{% block title %}Parent Publication Tag{% endblock %}
 
-{% block page_title %}Tag{% endblock %}
+{% block page_title %}Parent Publication Tag{% endblock %}
 {% block page_subtitle %}Show{% endblock %}
 
 {% block page_content %}
@@ -12,17 +12,17 @@
                 <tbody>
                 <tr>
                     <th>{{ 'arbex.tag.title' | trans }}</th>
-                    <td>{{ tag.title }}</td>
+                    <td>{{ availability_tag.title }}</td>
 
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.created_at' | trans }}</th>
-                    <td>{{ tag.createdAt | date('d-m-Y') }}</td>
+                    <td>{{ availability_tag.createdAt | date('d-m-Y') }}</td>
 
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.updated_at' | trans }}</th>
-                    <td>{{ tag.updatedAt | date('d-m-Y') }}</td>
+                    <td>{{ availability_tag.updatedAt | date('d-m-Y') }}</td>
 
                 </tr>
                 </tbody>
@@ -32,13 +32,13 @@
         <div class="box-footer">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="{{ path('admin_tag_index') }}" class="btn btn-default">back to list</a>
-                    <a href="{{ path('admin_tag_edit', {'id': tag.id}) }}" class="btn btn-warning">edit</a>
+                    <a href="{{ path('admin_availability_tag_index') }}" class="btn btn-default">back to list</a>
+                    <a href="{{ path('admin_availability_tag_edit', {'id': availability_tag.id}) }}" class="btn btn-warning">edit</a>
                 </div>
 
                 {% if is_granted('ROLE_ADMIN_ARBEX') %}
                     <div class="col-md-2 pull-right">
-                        {{ include('admin/tag/tag/_delete_form.html.twig') }}
+                        {{ include('admin/tag/availability_tag/_delete_form.html.twig') }}
                     </div>
                 {% endif %}
             </div>

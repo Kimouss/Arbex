@@ -3,8 +3,8 @@
 namespace App\Controller\Admin\Tag;
 
 use App\Controller\ArbexAbstractController;
-use App\Entity\Tag\ParentPublicationTag;
-use App\Form\Tag\ParentPublicationTagType;
+use App\Entity\Tag\Tag;
+use App\Form\Tag\TagType;
 use App\Repository\Tag\TagRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +18,10 @@ class TagController extends ArbexAbstractController
     /**
      * @Route("/", name="admin_tag_index", methods={"GET"})
      */
-    public function index(TagRepository $parentPublicationTagRepository, Request $request): Response
+    public function index(TagRepository $tagRepository, Request $request): Response
     {
         $pagination = $this->paginator->paginate(
-            $parentPublicationTagRepository->getAllQuery(),
+            $tagRepository->getAllQuery(),
             $request->query->getInt('page', 1),
             10
         );
@@ -32,44 +32,21 @@ class TagController extends ArbexAbstractController
     }
 
     /**
-     * @Route("/new", name="admin_tag_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $parentPublicationTag = new ParentPublicationTag();
-        $form = $this->createForm(ParentPublicationTagType::class, $parentPublicationTag);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($parentPublicationTag);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_tag_index');
-        }
-
-        return $this->render('admin/tag/tag/new.html.twig', [
-            'tag' => $parentPublicationTag,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="admin_tag_show", methods={"GET"})
      */
-    public function show(ParentPublicationTag $parentPublicationTag): Response
+    public function show(TagRepository $tagRepository): Response
     {
         return $this->render('admin/tag/tag/show.html.twig', [
-            'tag' => $parentPublicationTag,
+            'tag' => $tagRepository,
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="admin_tag_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, ParentPublicationTag $parentPublicationTag): Response
+    public function edit(Request $request, Tag $tagRepository): Response
     {
-        $form = $this->createForm(ParentPublicationTagType::class, $parentPublicationTag);
+        $form = $this->createForm(TagType::class, $tagRepository);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -79,7 +56,7 @@ class TagController extends ArbexAbstractController
         }
 
         return $this->render('admin/tag/tag/edit.html.twig', [
-            'tag' => $parentPublicationTag,
+            'tag' => $tagRepository,
             'form' => $form->createView(),
         ]);
     }
@@ -87,11 +64,11 @@ class TagController extends ArbexAbstractController
     /**
      * @Route("/{id}", name="admin_tag_delete", methods={"POST"})
      */
-    public function delete(Request $request, ParentPublicationTag $parentPublicationTag): Response
+    public function delete(Request $request, Tag $tagRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$parentPublicationTag->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$tagRepository->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($parentPublicationTag);
+            $entityManager->remove($tagRepository);
             $entityManager->flush();
         }
 

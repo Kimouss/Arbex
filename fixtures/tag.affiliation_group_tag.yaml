@@ -1,0 +1,26 @@
+App\Entity\Tag\AffiliationGroupTag:
+    random_affiliation_group_tag (template):
+        title: '<current()>'
+        createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+        updatedAt: '@self->createdAt'
+
+    affiliation_group_tag_black (extends random_affiliation_group_tag):
+        title: 'Black'
+
+    affiliation_group_tag_disability (extends random_affiliation_group_tag):
+        title: 'Disability'
+
+    affiliation_group_tag_first_generation (extends random_affiliation_group_tag):
+        title: 'First Generation'
+
+    affiliation_group_tag_indigenous (extends random_affiliation_group_tag):
+        title: 'Indigenous'
+
+    affiliation_group_tag_latin_x (extends random_affiliation_group_tag):
+        title: 'LatinX'
+
+    affiliation_group_tag_lgbtqi (extends random_affiliation_group_tag):
+        title: 'LGBTQI+'
+
+    affiliation_group_tag_nonbinaty (extends random_affiliation_group_tag):
+        title: 'Nonbinary'

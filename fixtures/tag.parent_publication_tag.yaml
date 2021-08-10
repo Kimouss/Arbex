@@ -1,0 +1,5 @@
+App\Entity\Tag\ParentPublicationTag:
+    parent_publication_tag:
+        title: 'Physics'
+        createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+        updatedAt: '@self->createdAt'

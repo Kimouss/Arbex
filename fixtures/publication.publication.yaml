@@ -6,6 +6,7 @@ App\Entity\Publication:
     createdAt: <dateTimeInInterval('-6 months', '-1 year')>
     updatedAt: '@self->createdAt'
     user: '@user_<current()>'
+    publicationTags: ['@publication_tag_astrophysics', '@publication_tag_atomic_physics', '@publication_tag_condensed_matter']
 
   publication_admin_arbex (extends publication_random):
     user: '@user_admin_arbex'

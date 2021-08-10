@@ -15,12 +15,12 @@ App\Entity\Menu:
 
 ### USER ###
     menu_user_parent:
-        label: 'Utilisateur'
+        label: 'Users'
         icon: 'fas fa-user'
         is_active: true
 
     menu_user_child:
-        label: 'Liste des utilisateurs'
+        label: 'User list'
         menu: '@menu_user_parent'
         route: 'admin_user_user_index'
         is_active: true
@@ -32,7 +32,7 @@ App\Entity\Menu:
         is_active: true
 
     menu_publication_child:
-        label: 'Liste des publications'
+        label: 'Publication list'
         menu: '@menu_publication_parent'
         route: 'admin_publication_index'
         is_active: true
@@ -44,13 +44,38 @@ App\Entity\Menu:
         is_active: true
 
     menu_tag_child:
-        label: 'Liste des tags'
+        label: 'Tags list'
         menu: '@menu_tag_parent'
         route: 'admin_tag_index'
         is_active: true
 
     menu_parent_publication_tag_child:
-        label: 'Liste des tags'
+        label: 'Parent Publication tag list'
         menu: '@menu_tag_parent'
         route: 'admin_parent_publication_tag_index'
         is_active: true
+
+    menu_publication_tag_child:
+        label: 'Publication tag list'
+        menu: '@menu_tag_parent'
+        route: 'admin_publication_tag_index'
+        is_active: true
+
+    menu_affiliation_group_tag_child:
+        label: 'Affiliation tag list'
+        menu: '@menu_tag_parent'
+        route: 'admin_affiliation_group_tag_index'
+        is_active: true
+
+    menu_availability_tag_child:
+        label: 'Availability tag list'
+        menu: '@menu_tag_parent'
+        route: 'admin_availability_tag_index'
+        is_active: true
+
+    menu_training_stage_tag_child:
+        label: 'Training stage tag list'
+        menu: '@menu_tag_parent'
+        route: 'admin_training_stage_tag_index'
+        is_active: true
+

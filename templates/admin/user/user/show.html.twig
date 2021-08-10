@@ -48,6 +48,24 @@
                                 <td>{{ user.profile | raw }}</td>
                             </tr>
                         {% endif %}
+                        {% if user.affiliationGroupTags %}
+                            <tr>
+                                <th>{{ 'arbex.affiliation' | trans }}</th>
+                                <td>{{ user.affiliationGroupTagsToHtml | raw }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if user.availabilityTags %}
+                            <tr>
+                                <th>{{ 'arbex.availability' | trans }}</th>
+                                <td>{{ user.availabilityTagsToHtml | raw }}</td>
+                            </tr>
+                        {% endif %}
+                        {% if user.trainingStageTags %}
+                            <tr>
+                                <th>{{ 'arbex.training' | trans }}</th>
+                                <td>{{ user.trainingStageTagsToHtml | raw }}</td>
+                            </tr>
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>

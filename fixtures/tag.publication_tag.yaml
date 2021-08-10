@@ -1,0 +1,32 @@
+App\Entity\Tag\PublicationTag:
+    random_publication_tag (template):
+        title: '<current()>'
+        createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+        updatedAt: '@self->createdAt'
+
+    publication_tag_physics (template, extends random_publication_tag):
+        parent: '@parent_publication_tag'
+
+    publication_tag_astrophysics (extends publication_tag_physics):
+        title: 'Astrophysics'
+
+    publication_tag_atomic_physics (extends publication_tag_physics):
+        title: 'Atomic Physics'
+
+    publication_tag_condensed_matter (extends publication_tag_physics):
+        title: 'Condensed Matter'
+
+    publication_tag_gravity_cosmology (extends publication_tag_physics):
+        title: 'Gravity/Cosmology'
+
+    publication_tag_high_energy_physics (extends publication_tag_physics):
+        title: 'High Energy Physics'
+
+    publication_tag_nuclear_physics (extends publication_tag_physics):
+        title: 'Nuclear Physics'
+
+    publication_tag_particle_physics (extends publication_tag_physics):
+        title: 'Particle Physics'
+
+    publication_tag_physics_education (extends publication_tag_physics):
+        title: 'Physics Education'

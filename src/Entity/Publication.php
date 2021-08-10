@@ -57,7 +57,7 @@ class Publication
     /**
      * @ORM\ManyToMany(targetEntity=PublicationTag::class, inversedBy="publications")
      */
-    public Collection $tags;
+    public $publicationTags;
 
     public function getId(): ?string
     {
@@ -127,26 +127,37 @@ class Publication
     /**
      * @return Collection|PublicationTag[]
      */
-    public function getTags(): ?Collection
+    public function getPublicationTags(): ?Collection
     {
-        return $this->tags;
+        return $this->publicationTags;
     }
 
-    public function addTag(PublicationTag $tag): self
+    public function getPublicationTagsToHtml()
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addPublication($this);
+        $html = '';
+        /** @var PublicationTag $item */
+        foreach ($this->publicationTags->toArray() as $item) {
+            $html .= '<li>'.$item->getTitle().'</li>';
+        }
+
+        return '<ul>'.$html.'</ul>';
+    }
+
+    public function addPublicationTag(PublicationTag $publicationTag): self
+    {
+        if (!$this->publicationTags->contains($publicationTag)) {
+            $this->publicationTags[] = $publicationTag;
+            $publicationTag->addPublication($this);
         }
 
         return $this;
     }
 
-    public function removeTag(PublicationTag $tag): self
+    public function removeTag(PublicationTag $publicationTag): self
     {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-            $tag->removePublication($this);
+        if ($this->publicationTags->contains($publicationTag)) {
+            $this->publicationTags->removeElement($publicationTag);
+            $publicationTag->removePublication($this);
         }
 
         return $this;

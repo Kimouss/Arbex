@@ -13,27 +13,26 @@
                 <tr>
                     <th>{{ 'arbex.publication.title' | trans }}</th>
                     <td>{{ publication.title }}</td>
-
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.description' | trans }}</th>
                     <td>{{ publication.description }}</td>
-
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.url' | trans }}</th>
                     <td>{{ publication.url }}</td>
-
+                </tr>
+                <tr>
+                    <th>{{ 'arbex.publication.publication_tags' | trans }}</th>
+                    <td>{{ publication.publicationTagsToHtml | raw }}</td>
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.created_at' | trans }}</th>
                     <td>{{ publication.createdAt | date('d-m-Y') }}</td>
-
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.updated_at' | trans }}</th>
                     <td>{{ publication.updatedAt | date('d-m-Y') }}</td>
-
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.user' | trans }}</th>
