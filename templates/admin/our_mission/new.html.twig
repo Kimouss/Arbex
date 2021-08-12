@@ -1,0 +1,23 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}New Our Mission{% endblock %}
+
+{% block page_title %}Our Mission{% endblock %}
+{% block page_subtitle %}New{% endblock %}
+
+{% block page_content %}
+    <div class="box box-default">
+        <div class="box-body">
+            {{ include('admin/our_mission/_form.html.twig', {'button_label': 'New'}) }}
+        </div>
+
+        <div class="box-footer">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_our_mission_index') }}" class="btn btn-default">back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -36,3 +36,13 @@ arbex.user.user: 'User'
 arbex.tag.title: 'Title'
 arbex.tag.created_at: 'Created at'
 arbex.tag.updated_at: 'Updated at'
+
+arbex.history.title: 'Title'
+arbex.history.text: 'Text'
+arbex.history.created_at: 'Created at'
+arbex.history.updated_at: 'Updated at'
+
+arbex.mission.title: 'Title'
+arbex.mission.text: 'Text'
+arbex.mission.created_at: 'Created at'
+arbex.mission.updated_at: 'Updated at'

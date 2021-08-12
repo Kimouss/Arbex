@@ -4,6 +4,9 @@ namespace App\Entity\User;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Publication;
+use App\Entity\Tag\AffiliationGroupTag;
+use App\Entity\Tag\AvailabilityTag;
+use App\Entity\Tag\TrainingStageTag;
 use App\Repository\User\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,11 +15,10 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\Lazy\LazyUuidFromString;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Entity\Tag\AffiliationGroupTag;
-use App\Entity\Tag\AvailabilityTag;
-use App\Entity\Tag\TrainingStageTag;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource(
@@ -36,6 +38,7 @@ use App\Entity\Tag\TrainingStageTag;
  * )
  * @UniqueEntity("email")
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -89,6 +92,18 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private bool $isActive = false;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $userProfilImage;
+
+    /**
+     * @Vich\UploadableField(mapping="user_profil", fileNameProperty="userProfilImage")
+     * @var File
+     */
+    private $userProfilImageFile;
 
     /**
      * @ORM\OneToOne(targetEntity=Identity::class, cascade={"persist", "remove"})
@@ -386,6 +401,33 @@ class User implements UserInterface
     public function removeTrainingStageTag(TrainingStageTag $trainingStageTag): self
     {
         $this->trainingStageTags->removeElement($trainingStageTag);
+
+        return $this;
+    }
+
+    public function getUserProfilImage(): ?string
+    {
+        return $this->userProfilImage;
+    }
+
+    public function setUserProfilImage(string $userProfilImage): User
+    {
+        $this->userProfilImage = $userProfilImage;
+
+        return $this;
+    }
+
+    public function getUserProfilImageFile(): ?File
+    {
+        return $this->userProfilImageFile;
+    }
+
+    public function setUserProfilImageFile(?File $userProfilImageFile): User
+    {
+        $this->userProfilImageFile = $userProfilImageFile;
+        if (null !== $userProfilImageFile) {
+            $this->updatedAt = new \DateTime();
+        }
 
         return $this;
     }

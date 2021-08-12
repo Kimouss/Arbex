@@ -1,8 +1,14 @@
 body {
     background-color: lightgray;
+    font-family: "Open Sans", "Helvetica Neue", serif;
 }
 
 .flag-icon {
     width: 16px;
     height: 16px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
 }

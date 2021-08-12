@@ -13,6 +13,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
@@ -28,6 +30,7 @@ class UserType extends AbstractType
                 'label' => 'form.roles',
                 'translation_domain' => 'form',
             ])
+            ->add('userProfilImageFile', VichImageType::class)
             ->add('profile', CKEditorType::class, [
                 'required' => false,
                 'config_name' => 'main_config',

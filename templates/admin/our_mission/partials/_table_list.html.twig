@@ -1,0 +1,52 @@
+<div class="box-body">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">
+                {{ knp_pagination_sortable(pagination, 'arbex.mission.title' | trans, 'our_mission.title') }}
+                <i class="fas fa-{{ sortDirectionIcon('our_mission.title', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.mission.created_at' | trans, 'user.created_at') }}
+                <i class="fas fa-{{ sortDirectionIcon('user.created_at', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.mission.updated_at' | trans, 'our_mission.updated_at') }}
+                <i class="fas fa-{{ sortDirectionIcon('our_mission.updated_at', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                Action
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for our_mission in pagination %}
+            <tr>
+                <th scope="row">{{ our_mission.title }}</th>
+                <td class="text-center">{{ our_mission.createdAt | date('d-m-Y') }}</td>
+                <td class="text-center">{{ our_mission.updatedAt | date('d-m-Y') }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{{ path('admin_our_mission_show', {id: our_mission.id}) }}" class="btn-sm btn-success">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="{{ path('admin_our_mission_edit', {id: our_mission.id}) }}" class="btn-sm btn-primary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_our_mission_new') }}" class="btn btn-primary">New</a>
+
+    <div class="navigation">
+        <div class="pull-right">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>

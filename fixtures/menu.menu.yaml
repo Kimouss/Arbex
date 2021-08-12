@@ -79,3 +79,21 @@ App\Entity\Menu:
         route: 'admin_training_stage_tag_index'
         is_active: true
 
+
+### ABOUT ARBEX ###
+    menu_about_arbex_parent:
+        label: 'About Arbex'
+        icon: 'fas fa-question'
+        is_active: true
+
+    menu_our_history_child:
+        label: 'Our History'
+        menu: '@menu_about_arbex_parent'
+        route: 'admin_our_history_index'
+        is_active: true
+
+    menu_our_mission_child:
+        label: 'Our Mission'
+        menu: '@menu_about_arbex_parent'
+        route: 'admin_our_mission_index'
+        is_active: true
