@@ -1,0 +1,22 @@
+{% extends 'about/about.html.twig' %}
+
+{% block title %}OurHistory index{% endblock %}
+
+{% block tab_content %}
+    {% for our_history in our_histories %}
+        <div class="row py-5">
+            <div class="col-md-12">
+                <img class="img-fluid mx-auto d-block" style="height: 450px" src="{{ vich_uploader_asset(our_history, 'historyImageFile') }}" alt="{{ our_history.title }}">
+            </div>
+        </div>
+
+        <div class="container mx-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ our_history.title }}</h2>
+                </div>
+                <p>{{ our_history.text | raw }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

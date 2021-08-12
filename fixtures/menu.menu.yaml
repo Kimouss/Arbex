@@ -97,3 +97,15 @@ App\Entity\Menu:
         menu: '@menu_about_arbex_parent'
         route: 'admin_our_mission_index'
         is_active: true
+
+    menu_team_role_child:
+        label: 'Team Role'
+        menu: '@menu_about_arbex_parent'
+        route: 'admin_team_role_index'
+        is_active: true
+
+    menu_team_member_child:
+        label: 'Team Member'
+        menu: '@menu_about_arbex_parent'
+        route: 'admin_team_member_index'
+        is_active: true

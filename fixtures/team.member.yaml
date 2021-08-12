@@ -1,0 +1,40 @@
+App\Entity\Team\Member:
+  team_member_claire_boine:
+    hierarchy: '@team_role_executive'
+    fullName: 'Claire Boine'
+    role: 'Co-President'
+    job: 'Research Scholar'
+    domain: 'Field'
+    school: 'Boston University'
+
+  team_member_zoe_yan:
+    hierarchy: '@team_role_executive'
+    fullName: 'Zoe Yan'
+    role: 'Co-President'
+    job: 'Post-Doctoral Researcher'
+    domain: 'Physics'
+    school: 'Princeton University'
+
+  team_member_harrison_prosper:
+    hierarchy: '@team_role_executive'
+    fullName: 'Harrison Prosper'
+    role: 'Board Member'
+    job: 'Professor'
+    domain: 'Physics'
+    school: 'Florida State University'
+
+  team_member_claire_boine_ad:
+    hierarchy: '@team_role_advisory'
+    fullName: 'Claire Boine AD'
+    role: 'Co-President'
+    job: 'Research Scholar'
+    domain: 'Field'
+    school: 'Boston University'
+
+  team_member_zoe_yan_ad:
+    hierarchy: '@team_role_advisory'
+    fullName: 'Zoe Yan AD'
+    role: 'Co-President'
+    job: 'Post-Doctoral Researcher'
+    domain: 'Physics'
+    school: 'Princeton University'

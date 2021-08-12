@@ -19,6 +19,10 @@
                     <td>{{ our_history.text | raw }}</td>
                 </tr>
                 <tr>
+                    <th>{{ 'arbex.history.image' | trans }}</th>
+                    <td><img src="{{ vich_uploader_asset(our_history, 'historyImageFile') }}" style="height: 200px" alt="{{ our_mission.title }}" /></td>
+                </tr>
+                <tr>
                     <th>{{ 'arbex.publication.created_at' | trans }}</th>
                     <td>{{ our_history.createdAt | date('d-m-Y') }}</td>
                 </tr>

@@ -23,3 +23,10 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
+        team_member:
+            uri_prefix: /images/team_member
+            upload_destination: '%kernel.project_dir%/public/images/team_member'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

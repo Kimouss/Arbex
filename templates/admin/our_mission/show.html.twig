@@ -19,6 +19,10 @@
                     <td>{{ our_mission.text | raw }}</td>
                 </tr>
                 <tr>
+                    <th>{{ 'arbex.mission.image' | trans }}</th>
+                    <td><img src="{{ vich_uploader_asset(our_mission, 'missionImageFile') }}" style="height: 200px" alt="{{ our_mission.title }}" /></td>
+                </tr>
+                <tr>
                     <th>{{ 'arbex.publication.created_at' | trans }}</th>
                     <td>{{ our_mission.createdAt | date('d-m-Y') }}</td>
                 </tr>

@@ -31,6 +31,7 @@ arbex.publication.updated_at: 'Date de modification'
 arbex.publication.publication: 'Publications'
 
 arbex.user.user: 'Utilisateur'
+arbex.user.image: 'Image'
 
 arbex.tag.title: 'Titre'
 arbex.tag.created_at: 'Date de création'
@@ -38,10 +39,25 @@ arbex.tag.updated_at: 'Date de modification'
 
 arbex.history.title: 'Titre'
 arbex.history.text: 'Texte'
+arbex.history.image: 'Image'
 arbex.history.created_at: 'Date de création'
 arbex.history.updated_at: 'Date de modification'
 
 arbex.mission.title: 'Titre'
 arbex.mission.text: 'Text'
+arbex.mission.image: 'Image'
 arbex.mission.created_at: 'Date de création'
 arbex.mission.updated_at: 'Date de modification'
+
+arbex.role.name: 'Nom'
+arbex.role.position: 'Position'
+arbex.role.created_at: 'Date de création'
+arbex.role.updated_at: 'Date de modification'
+
+arbex.member.full_name: 'Nom'
+arbex.member.hierarchy: 'Hierarchy'
+arbex.member.job: 'Job'
+arbex.member.domain: 'Domaine'
+arbex.member.school: 'Ecole'
+arbex.member.created_at: 'Date de création'
+arbex.member.updated_at: 'Date de modification'

@@ -1,0 +1,57 @@
+<div class="box-body">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">
+                {{ knp_pagination_sortable(pagination, 'arbex.member.full_name' | trans, 'team_member.full_name') }}
+                <i class="fas fa-{{ sortDirectionIcon('member.full_name', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.member.hierarchy' | trans, 'hierarchy.name') }}
+                <i class="fas fa-{{ sortDirectionIcon('hierarchy.name', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.member.created_at' | trans, 'team_member.created_at') }}
+                <i class="fas fa-{{ sortDirectionIcon('member.created_at', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                {{ knp_pagination_sortable(pagination, 'arbex.member.updated_at' | trans, 'team_member.updated_at') }}
+                <i class="fas fa-{{ sortDirectionIcon('member.updated_at', pagination.params) }}"></i>
+            </th>
+            <th scope="col" class="text-center">
+                Action
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for member in pagination %}
+            <tr>
+                <th scope="row">{{ member.fullName }}</th>
+                <td class="text-center">{{ member.hierarchy.name }}</td>
+                <td class="text-center">{{ member.createdAt | date('d-m-Y') }}</td>
+                <td class="text-center">{{ member.updatedAt | date('d-m-Y') }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{{ path('admin_team_member_show', {id: member.id}) }}" class="btn-sm btn-success">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="{{ path('admin_team_member_edit', {id: member.id}) }}" class="btn-sm btn-primary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_team_member_new') }}" class="btn btn-primary">New</a>
+
+    <div class="navigation">
+        <div class="pull-right">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>

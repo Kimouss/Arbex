@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OurHistory index{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="d-flex justify-content-around bd-highlight">
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'our_history_index' %}tab-active{% endif %}" href="{{ path('our_history_index') }}">OUR HISTORY</a>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'our_history_index' %}tab-active{% endif %}" href="{{ path('our_history_index') }}">OUR TEAM</a>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'our_mission_index' %}tab-active{% endif %}" href="{{ path('our_mission_index') }}">OUR MISSION</a>
+            </div>
+        </div>
+
+        {% block tab_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

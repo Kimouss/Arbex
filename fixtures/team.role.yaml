@@ -1,0 +1,11 @@
+App\Entity\Team\Role:
+  team_role_executive:
+    name: 'EXECUTIVE LEADERSHIP'
+    position: 100
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'
+  team_role_advisory:
+    name: 'ADVISORY BOARD'
+    position: 200
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'

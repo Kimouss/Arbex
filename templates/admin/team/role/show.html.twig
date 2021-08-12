@@ -1,0 +1,44 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Team Role{% endblock %}
+
+{% block page_title %}Team Role{% endblock %}
+{% block page_subtitle %}Show{% endblock %}
+
+{% block page_content %}
+    <div class="box box-default">
+        <div class="box-body">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>{{ 'arbex.role.name' | trans }}</th>
+                    <td>{{ role.name }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'arbex.publication.created_at' | trans }}</th>
+                    <td>{{ role.createdAt | date('d-m-Y') }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'arbex.publication.updated_at' | trans }}</th>
+                    <td>{{ role.updatedAt | date('d-m-Y') }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box-footer">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_team_role_index') }}" class="btn btn-default">back to list</a>
+                    <a href="{{ path('admin_team_role_edit', {'id': role.id}) }}" class="btn btn-warning">edit</a>
+                </div>
+
+                {% if is_granted('ROLE_ADMIN_ARBEX') %}
+                    <div class="col-md-2 pull-right">
+                        {{ include('admin/team/role/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
