@@ -1,16 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #C4C4C4!important">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
+            <li>
+                <a href="{{ path('consumer_dashboard') }}">
+                    <img height="64px" src="{{ asset('build/images/logo_name.png') }}" alt="logo">
+                </a>
+            </li>
             <li class="py-2 px-2 nav-item dropdown mx-5">
                 <a class="nav-link dropdown-toggle" id="about_arbex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About ArBex</a>
                 <div class="dropdown-menu" aria-labelledby="about_arbex">
-                    <a class="dropdown-item" href="#">Our History</a>
-                    <a class="dropdown-item" href="#">Our Team</a>
-                    <a class="dropdown-item" href="#">Our Mission</a>
+                    <a class="dropdown-item" href="{{ path('our_history_index') }}">Our History</a>
+                    <a class="dropdown-item" href="{{ path('team_member_index') }}">Our Team</a>
+                    <a class="dropdown-item" href="{{ path('our_mission_index') }}">Our Mission</a>
                 </div>
             </li>
             <li class="py-2 px-2 nav-item dropdown mx-5">

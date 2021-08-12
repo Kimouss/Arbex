@@ -1,12 +1,16 @@
 {% extends 'about/about.html.twig' %}
 
-{% block title %}OurHistory index{% endblock %}
+{% block title %}Our History index{% endblock %}
 
 {% block tab_content %}
     {% for our_history in our_histories %}
         <div class="row py-5">
             <div class="col-md-12">
-                <img class="img-fluid mx-auto d-block" style="height: 450px" src="{{ vich_uploader_asset(our_history, 'historyImageFile') }}" alt="{{ our_history.title }}">
+                {% if our_history.historyImageFile is not empty or our_history.historyImageFile is null or our_history.historyImage == 'image.png' %}
+                    <img class="img-fluid mx-auto d-block" style="height: 450px"  src="{{ asset('build/images/empty_land.png') }}" alt="empty">
+                {% else %}
+                    <img class="img-fluid mx-auto d-block" style="height: 450px" src="{{ vich_uploader_asset(our_history, 'historyImageFile') }}" alt="{{ our_history.title }}">
+                {% endif %}
             </div>
         </div>
 

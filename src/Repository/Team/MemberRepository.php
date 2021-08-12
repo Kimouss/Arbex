@@ -26,4 +26,14 @@ class MemberRepository extends ServiceEntityRepository
             ->join('team_member.hierarchy', 'hierarchy')
             ->getQuery();
     }
+
+    public function getOrderByPosition($position = 'ASC')
+    {
+        return $this->createQueryBuilder('team_member')
+            ->join('team_member.hierarchy', 'hierarchy')
+            ->orderBy('hierarchy.position', $position)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

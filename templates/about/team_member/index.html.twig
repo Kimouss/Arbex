@@ -1,0 +1,27 @@
+{% extends 'about/about.html.twig' %}
+
+{% block title %}Team Member index{% endblock %}
+
+{% block tab_content %}
+    <div class="container py-5">
+        {% for key, items in members %}
+            <h3 class="pb-3">{{ key }}</h3>
+            <div class="row pb-5">
+                {% for member in items %}
+                    <div class="col-md-4 pb-5">
+                        {% if member.imageFile is not empty or member.imageFile is null %}
+                            <img src="{{ asset('build/images/empty.png') }}" alt="empty" style="height: 350px">
+                        {% else %}
+                            <img src="{{ vich_uploader_asset(member, 'imageFile') }}" style="height: 200px" alt="{{ member.imageFile }}" />
+                        {% endif %}
+                        <p class="text-uppercase my-1">{{ member.fullName }}</p>
+                        <p class="text-uppercase font-weight-bold">{{ member.role }}</p>
+                        <p class="font-weight-light my-0">{{ member.job }}</p>
+                        <p class="font-weight-light my-0">{{ member.domain }}</p>
+                        <p class="font-weight-light my-0">{{ member.school }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

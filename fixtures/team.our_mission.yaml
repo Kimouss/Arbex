@@ -1,0 +1,7 @@
+App\Entity\OurMission:
+  team_our_mission:
+    title: 'Title mission'
+    text: <randomHtml(6, 6)>
+    missionImage: 'image.png'
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'

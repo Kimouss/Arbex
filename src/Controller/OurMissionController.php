@@ -19,7 +19,7 @@ class OurMissionController extends AbstractController
     public function index(OurMissionRepository $ourMissionRepository): Response
     {
         return $this->render('about/our_mission/index.html.twig', [
-            'our_missions' => $ourMissionRepository->findAll(),
+            'our_missions' => $ourMissionRepository->findBy([], ['id' => 'DESC'], 1, 0),
         ]);
     }
 }

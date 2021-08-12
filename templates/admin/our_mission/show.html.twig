@@ -20,7 +20,12 @@
                 </tr>
                 <tr>
                     <th>{{ 'arbex.mission.image' | trans }}</th>
-                    <td><img src="{{ vich_uploader_asset(our_mission, 'missionImageFile') }}" style="height: 200px" alt="{{ our_mission.title }}" /></td>
+
+                    {% if our_mission.missionImageFile is not empty or our_mission.missionImageFile is null or our_mission.missionImage == 'image.png' %}
+                        <img src="{{ asset('build/images/empty_land.png') }}" alt="empty" style="height: 200px">
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(our_mission, 'missionImageFile') }}" style="height: 200px" alt="{{ our_mission.title }}" />
+                    {% endif %}
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.created_at' | trans }}</th>

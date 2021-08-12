@@ -12,3 +12,15 @@ body {
     display: block;
     margin-top: 0;
 }
+
+a.arbex-tab-link {
+    text-decoration: none;
+    color: #000;
+}
+
+a.arbex-tab-link:hover, .tab-active {
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}

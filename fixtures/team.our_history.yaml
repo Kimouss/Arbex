@@ -1,0 +1,7 @@
+App\Entity\OurHistory:
+  team_our_history:
+    title: 'Title history'
+    text: <randomHtml(6, 6)>
+    historyImage: 'image.png'
+    createdAt: <dateTimeInInterval('-6 months', '-1 year')>
+    updatedAt: '@self->createdAt'

@@ -1,12 +1,16 @@
 {% extends 'about/about.html.twig' %}
 
-{% block title %}OurHistory index{% endblock %}
+{% block title %}Our Mission index{% endblock %}
 
 {% block tab_content %}
     {% for our_mission in our_missions %}
         <div class="row py-5">
             <div class="col-md-12">
-                <img class="img-fluid mx-auto d-block" style="height: 450px" src="{{ vich_uploader_asset(our_mission, 'missionImageFile') }}" alt="{{ our_mission.title }}">
+                {% if our_mission.missionImageFile is not empty or our_mission.missionImageFile is null or our_mission.missionImage == 'image.png' %}
+                    <img class="img-fluid mx-auto d-block" style="height: 450px"  src="{{ asset('build/images/empty_land.png') }}" alt="empty">
+                {% else %}
+                    <img class="img-fluid mx-auto d-block" style="height: 450px" src="{{ vich_uploader_asset(our_mission, 'missionImageFile') }}" alt="{{ our_mission.title }}">
+                {% endif %}
             </div>
         </div>
 

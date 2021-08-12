@@ -20,7 +20,13 @@
                 </tr>
                 <tr>
                     <th>{{ 'arbex.history.image' | trans }}</th>
-                    <td><img src="{{ vich_uploader_asset(our_history, 'historyImageFile') }}" style="height: 200px" alt="{{ our_mission.title }}" /></td>
+                    <td>
+                        {% if our_history.historyImageFile is not empty or our_history.historyImageFile is null or our_history.historyImage == 'image.png' %}
+                            <img src="{{ asset('build/images/empty_land.png') }}" alt="empty" style="height: 200px">
+                        {% else %}
+                            <img src="{{ vich_uploader_asset(our_history, 'historyImageFile') }}" style="height: 200px" alt="{{ our_history.title }}" />
+                        {% endif %}
+                    </td>
                 </tr>
                 <tr>
                     <th>{{ 'arbex.publication.created_at' | trans }}</th>

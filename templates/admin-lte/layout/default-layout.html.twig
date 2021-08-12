@@ -26,10 +26,12 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
     <header class="main-header">
         <a href="{% block logo_path %}{{ path('adminlte_welcome'|route_alias) }}{% endblock %}" class="logo">
             <span class="logo-mini">
-                {% block logo_mini %}<b>ArBex</b>{% endblock %}
+                <img src="{{ asset('build/images/logo.png') }}" alt="logo">
+{#                {% block logo_mini %}<b>ArBex</b>{% endblock %}#}
             </span>
             <span class="logo-lg">
-               {% block logo_large %} <b>ArBex</b> {% endblock %}
+                <img src="{{ asset('build/images/logo_name.png') }}" alt="logo">
+{#               {% block logo_large %} <b>ArBex</b> {% endblock %}#}
             </span>
         </a>
 

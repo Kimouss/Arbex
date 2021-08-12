@@ -1,43 +1,47 @@
-<footer class="container py-5">
-    <div class="row">
-        <div class="col-1 col-md-1">
-            <p>LOGO</p>
-        </div>
-        <div class="col-2 col-md-2">
-            <p>ABOUT ARBEX</p>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Our History</a></li>
-                <li><a class="text-muted" href="#">Our Team</a></li>
-                <li><a class="text-muted" href="#">Our Mission</a></li>
-            </ul>
-        </div>
-        <div class="col-2 col-md-2">
-            <p>SCHOLAR DATABASE</p>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Scholar Search</a></li>
-                <li><a class="text-muted" href="#">Scholar List</a></li>
-            </ul>
-        </div>
-        <div class="col-2 col-md-2">
-            <p>FOR STUDENTS</p>
-        </div>
-        <div class="col-2 col-md-2">
-            <p>JOIN OUR EFFORTS</p>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Become a Scholar</a></li>
-                <li><a class="text-muted" href="#">Become an Ally</a></li>
-            </ul>
-        </div>
-        <div class="col-3 col-md-3">
-            <p>SIGN UP FOR OUR MAILING LIST</p>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Email Address</a></li>
-            </ul>
+<footer style="background-color: #C4C4C4!important">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-1 col-md-1">
+                <a href="{{ path('consumer_dashboard') }}">
+                    <img height="64px" src="{{ asset('build/images/logo_name.png') }}" alt="logo">
+                </a>
+            </div>
+            <div class="col-2 col-md-2">
+                <p>ABOUT ARBEX</p>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="{{ path('our_history_index') }}">Our History</a></li>
+                    <li><a class="text-muted" href="{{ path('team_member_index') }}">Our Team</a></li>
+                    <li><a class="text-muted" href="{{ path('our_mission_index') }}">Our Mission</a></li>
+                </ul>
+            </div>
+            <div class="col-2 col-md-2">
+                <p>SCHOLAR DATABASE</p>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Scholar Search</a></li>
+                    <li><a class="text-muted" href="#">Scholar List</a></li>
+                </ul>
+            </div>
+            <div class="col-2 col-md-2">
+                <p>FOR STUDENTS</p>
+            </div>
+            <div class="col-2 col-md-2">
+                <p>JOIN OUR EFFORTS</p>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Become a Scholar</a></li>
+                    <li><a class="text-muted" href="#">Become an Ally</a></li>
+                </ul>
+            </div>
+            <div class="col-3 col-md-3">
+                <p>SIGN UP FOR OUR MAILING LIST</p>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Email Address</a></li>
+                </ul>
 
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
         </div>
     </div>
 </footer>
