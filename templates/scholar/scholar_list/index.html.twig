@@ -1,0 +1,41 @@
+{% extends 'scholar/scholar.html.twig' %}
+
+{% block title %}Team Member index{% endblock %}
+
+{% block tab_content %}
+    <div class="container py-5">
+        <h3 class="pb-3 text-uppercase">View all scholars</h3>
+        <p class="font-weight-light">{{ pagination.totalItemCount }} Results</p>
+        <div class="row pb-5">
+            {% for member in pagination %}
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-5">
+                    {% if member.userProfilImageFile is not empty or member.userProfilImageFile is null %}
+                        <img src="{{ asset('build/images/empty.png') }}" alt="empty" style="height: 230px">
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(member, 'userProfilImageFile') }}" style="height: 230px" alt="{{ member.userProfilImageFile }}" />
+                    {% endif %}
+                    <a href="{{ path('scholar_database_user_research', {id: member.id}) }}" class="c-black text-uppercase my-1">{{ member.identity.fullName }}</a>
+                    <p class="font-weight-light my-0 small">{{ member.identity.job }}</p>
+                    <p class="font-weight-light my-0 small">{{ member.identity.domain }}</p>
+                    <p class="font-weight-light my-0 small">{{ member.identity.school }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="maxItemPerPage">Result per page</label>
+            <select name="maxItemPerPage" id="maxItemPerPage">
+                <option selected="true" style="display:none;">Number Per Page</option>
+                <option id="10">10</option>
+                <option id="25">25</option>
+                <option id="50">50</option>
+            </select>
+        </div>
+        <div class="col-md-9 bottom-0">
+            <div class="d-flex justify-content-around">
+            {{ knp_pagination_render(pagination, 'partials/pagination.html.twig') }}</div>
+        </div>
+    </div>
+{% endblock %}

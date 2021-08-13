@@ -1,16 +1,40 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
-
-// any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-// import './styles/global.scss';
-
-// start the Stimulus application
-// import './bootstrap';
 
 const $ = require('jquery');
-// require('bootstrap/dist/js/bootstrap');
+
+import Swup from 'swup';
+import SwupTheme from '@swup/fade-theme';
+
+const swup = new Swup({
+    plugins: [
+        new SwupTheme()
+    ],
+});
+
+$(document).on('change', '#user_search_parent_tag', function () {
+    displayPublicationTagByParent();
+});
+
+function displayPublicationTagByParent()
+{
+    let $userSearchParentTag = $('#user_search_parent_tag');
+    if ($userSearchParentTag === 'undefined') {
+        return;
+    }
+    let $form = $(this).closest('form');
+    let data = {};
+    let spin = $('#spin');
+    let $userSearchPublication = $('#user_search_publication');
+
+    spin.removeClass('d-none');
+    $userSearchPublication.addClass('d-none')
+    data[$(this).attr('name')] = $(this).val();
+    data[$userSearchParentTag.attr('name')] = $userSearchParentTag.val();
+    $.get($form.attr('action'), data)
+        .done(function (html) {
+            $userSearchPublication.removeClass('d-none');
+            $userSearchPublication.replaceWith($(html).find('#user_search_publication'));
+            spin.addClass('d-none');
+        });
+}
+displayPublicationTagByParent();

@@ -19,8 +19,10 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.9.2",
+        "@swup/fade-theme": "^1.0.5",
         "bootstrap": "^5.0.2",
         "copy-webpack-plugin": "^9.0.0",
-        "jquery": "^3.6.0"
+        "jquery": "^3.6.0",
+        "swup": "^2.0.14"
     }
 }

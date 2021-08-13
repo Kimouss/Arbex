@@ -54,6 +54,21 @@ class Identity
      */
     private ?DateTime $birthdate = null;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $job;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $domain;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $school;
+
     public function __construct()
     {
         $this->id = Uuid::uuid4();
@@ -108,6 +123,47 @@ class Identity
     public function setBirthdate(?\DateTime $birthdate): self
     {
         $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->getFirstname() . ' ' . $this->getLastname();
+    }
+
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    public function setJob($job)
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    public function getSchool()
+    {
+        return $this->school;
+    }
+
+    public function setSchool($school)
+    {
+        $this->school = $school;
 
         return $this;
     }

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scholar Database index{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="d-flex justify-content-around bd-highlight">
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'scholar_database_user_research' %}tab-active{% endif %}" href="{{ path('scholar_database_user_research', {id: app.request.attributes.get('id')}) }}">RESEARCH</a>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'scholar_database_user_biography' %}tab-active{% endif %}" href="{{ path('scholar_database_user_biography', {id: app.request.attributes.get('id')}) }}">BIOGRAPHY</a>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'scholar_database_user_education' %}tab-active{% endif %}" href="{{ path('scholar_database_user_education', {id: app.request.attributes.get('id')}) }}">EDUCATIONAL MATERIALS</a>
+            </div>
+            <div class="p-2 bd-highlight">
+                <a class="arbex-tab-link {% if app.request.get('_route') == 'scholar_database_user_mentorship' %}tab-active{% endif %}" href="{{ path('scholar_database_user_mentorship', {id: app.request.attributes.get('id')}) }}">MENTORSHIP & OUTREACH</a>
+            </div>
+        </div>
+
+        {% block tab_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

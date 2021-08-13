@@ -5,6 +5,9 @@ form:
   firstname: "Firstname"
   birthdate: "Birthdate"
   profile: "Profile"
+  job: "Job"
+  domain: "Domain"
+  school: "School"
   email:
     first: "Email"
     second: "Confirm email"

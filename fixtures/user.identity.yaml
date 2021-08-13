@@ -3,30 +3,45 @@ App\Entity\User\Identity:
     firstName: <firstName()>
     lastName: <lastName()>
     gender: <gender()>
+    job: 'Professor'
+    domain: 'Physics'
+    school: 'Florida State University'
 
   identity_admin_arbex:
     firstName: 'Admin'
     lastName: 'ARBEX'
     gender: <gender()>
     birthdate: <datetime()>
+    job: 'Professor'
+    domain: 'Physics'
+    school: 'Florida State University'
 
   identity_kim_quang_pham:
     firstName: 'Kim Quang'
     lastName: 'PHAM'
     gender: 'M'
     birthdate: <datetime()>
+    job: 'Professor'
+    domain: 'Physics'
+    school: 'Florida State University'
 
   identity_claire_boine:
     firstName: 'Claire'
     lastName: 'BOINE'
     gender: 'MME'
     birthdate: <datetime()>
+    job: 'Professor'
+    domain: 'Physics'
+    school: 'Florida State University'
 
   identity_zoe_yan:
     firstName: 'Zoe'
     lastName: 'YAN'
     gender: 'MME'
     birthdate: <datetime()>
+    job: 'Professor'
+    domain: 'Physics'
+    school: 'Florida State University'
 
   identity_{1..15} (extends identity_random):
 

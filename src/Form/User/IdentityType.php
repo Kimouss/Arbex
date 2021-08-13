@@ -48,6 +48,27 @@ class IdentityType extends AbstractType
                 'format' => 'yyyy-MM-dd',
                 'required' => false,
             ])
+            ->add('job', TextType::class, [
+                'label' => 'form.job',
+                'translation_domain' => 'form',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                ]
+            ])
+            ->add('domain', TextType::class, [
+                'label' => 'form.domain',
+                'translation_domain' => 'form',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                ]
+            ])
+            ->add('school', TextType::class, [
+                'label' => 'form.school',
+                'translation_domain' => 'form',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                ]
+            ])
         ;
     }
 
