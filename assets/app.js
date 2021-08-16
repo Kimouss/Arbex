@@ -4,7 +4,6 @@ const $ = require('jquery');
 
 import Swup from 'swup';
 import SwupTheme from '@swup/fade-theme';
-
 const swup = new Swup({
     plugins: [
         new SwupTheme()
@@ -37,4 +36,5 @@ function displayPublicationTagByParent()
             spin.addClass('d-none');
         });
 }
+
 displayPublicationTagByParent();

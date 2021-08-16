@@ -8,6 +8,7 @@ use App\Entity\Tag\ParentPublicationTag;
 use App\Entity\Tag\PublicationTag;
 use App\Entity\Tag\TrainingStageTag;
 use App\Repository\Tag\PublicationTagRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -19,11 +20,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserSearchType extends AbstractType
 {
-    private PublicationTagRepository $publicationTagRepository;
 
-    public function __construct(PublicationTagRepository $publicationTagRepository)
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->publicationTagRepository = $publicationTagRepository;
+        $this->entityManager = $entityManager;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -37,7 +39,6 @@ class UserSearchType extends AbstractType
                 'class' => PublicationTag::class,
                 'multiple' => true,
                 'expanded' => true,
-//                'attr' => ['class' => 'form-check form-check-inline'],
             ])
         ;
 
@@ -45,13 +46,12 @@ class UserSearchType extends AbstractType
             if ($parentTag) {
                 $form
                     ->add('publication', ChoiceType::class, [
-                        'choices' => $this->publicationTagRepository->findBy(['parent' => $parentTag]),
+                        'choices' => $this->entityManager->getRepository(PublicationTag::class)->findBy(['parent' => $parentTag]),
                         'choice_label' => function ($choice) {
                             return $choice->getTitle();
                         },
                         'multiple' => true,
                         'expanded' => true,
-//                        'attr' => ['class' => 'form-check form-check-inline'],
                     ]);
             }
         };
@@ -61,23 +61,16 @@ class UserSearchType extends AbstractType
                 'class' => AffiliationGroupTag::class,
                 'multiple' => true,
                 'expanded' => true,
-//                'attr' => ['class' => 'form-check form-check-inline'],
-//                'label_attr' => ['class' => 'test_label'],
-//                'choice_attr' => function() {
-//                    return ['class' => 'test_choice'];
-//                }
             ])
             ->add('training_stage', EntityType::class, [
                 'class' => TrainingStageTag::class,
                 'multiple' => true,
                 'expanded' => true,
-//                'attr' => ['class' => 'form-check form-check-inline'],
             ])
             ->add('availability', EntityType::class, [
                 'class' => AvailabilityTag::class,
                 'multiple' => true,
                 'expanded' => true,
-//                'attr' => ['class' => 'form-check form-check-inline'],
             ])
             ->setMethod('GET')
             ->getForm()

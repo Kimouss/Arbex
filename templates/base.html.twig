@@ -31,7 +31,6 @@
                 crossorigin="anonymous">
         </script>
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
             {% if app.request.get('_route') == 'scholar_database_list' %}
                 <script>
                     $('#maxItemPerPage').change(function(){
@@ -42,6 +41,7 @@
                     });
                 </script>
             {% endif %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
 </html>
